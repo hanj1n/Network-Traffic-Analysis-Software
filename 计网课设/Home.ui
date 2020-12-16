@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HomeClass</class>
+ <widget class="QMainWindow" name="HomeClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>663</width>
+    <height>456</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>663</width>
+    <height>456</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>663</width>
+    <height>456</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>网络流量分析软件</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QListView" name="listView_search">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>621</width>
+      <height>381</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_search">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>591</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_search">
+    <property name="geometry">
+     <rect>
+      <x>616</x>
+      <y>0</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/Home/icon/进入.png);
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>663</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_file">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="action_import"/>
+    <addaction name="separator"/>
+    <addaction name="action_export"/>
+    <addaction name="separator"/>
+    <addaction name="action_exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_statistics">
+    <property name="title">
+     <string>统计</string>
+    </property>
+    <addaction name="action_chart"/>
+    <addaction name="action_IPv4_statistics"/>
+    <addaction name="action_IPv6_statistics"/>
+   </widget>
+   <widget class="QMenu" name="menu_capture">
+    <property name="title">
+     <string>捕获</string>
+    </property>
+    <addaction name="action_start"/>
+    <addaction name="action_stop"/>
+    <addaction name="action_restart"/>
+   </widget>
+   <widget class="QMenu" name="menu_view">
+    <property name="title">
+     <string>视图</string>
+    </property>
+    <addaction name="action_filter"/>
+   </widget>
+   <widget class="QMenu" name="menu_about">
+    <property name="title">
+     <string>关于</string>
+    </property>
+    <addaction name="action_developer"/>
+   </widget>
+   <addaction name="menu_file"/>
+   <addaction name="menu_view"/>
+   <addaction name="menu_capture"/>
+   <addaction name="menu_statistics"/>
+   <addaction name="menu_about"/>
+  </widget>
+  <action name="action_import">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>导入数据</string>
+   </property>
+  </action>
+  <action name="action_export">
+   <property name="text">
+    <string>导出数据</string>
+   </property>
+  </action>
+  <action name="action_start">
+   <property name="text">
+    <string>开始</string>
+   </property>
+  </action>
+  <action name="action_stop">
+   <property name="text">
+    <string>停止</string>
+   </property>
+  </action>
+  <action name="action_filter">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>过滤器</string>
+   </property>
+  </action>
+  <action name="action_restart">
+   <property name="text">
+    <string>重新开始</string>
+   </property>
+  </action>
+  <action name="action_exit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="action_UDP">
+   <property name="text">
+    <string>UDP</string>
+   </property>
+  </action>
+  <action name="action_TCP">
+   <property name="text">
+    <string>TCP</string>
+   </property>
+  </action>
+  <action name="action_ARP">
+   <property name="text">
+    <string>ARP</string>
+   </property>
+  </action>
+  <action name="action_IPv4">
+   <property name="text">
+    <string>IPv4</string>
+   </property>
+  </action>
+  <action name="action_IPv6">
+   <property name="text">
+    <string>IPv6</string>
+   </property>
+  </action>
+  <action name="action_HTTP">
+   <property name="text">
+    <string>HTTP</string>
+   </property>
+  </action>
+  <action name="action_DHCP">
+   <property name="text">
+    <string>DHCP</string>
+   </property>
+  </action>
+  <action name="action_DNS">
+   <property name="text">
+    <string>DNS</string>
+   </property>
+  </action>
+  <action name="action_developer">
+   <property name="text">
+    <string>开发者</string>
+   </property>
+  </action>
+  <action name="action_chart">
+   <property name="text">
+    <string>图表</string>
+   </property>
+  </action>
+  <action name="action_IPv4_statistics">
+   <property name="text">
+    <string>IPv4 statistics</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>表格</string>
+   </property>
+  </action>
+  <action name="action_IPv6_statistics">
+   <property name="text">
+    <string>IPv6 statistics</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="Home.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>action_import</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>file_import()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_export</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>file_export()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_exit</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_filter</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>view_filter()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_start</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>capture_start()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_stop</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>capture_end()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_restart</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>capture_restart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_developer</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>about()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_chart</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>statistics_chart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>file_import()</slot>
+  <slot>file_export()</slot>
+  <slot>file_exit()</slot>
+  <slot>view_filter()</slot>
+  <slot>capture_start()</slot>
+  <slot>capture_end()</slot>
+  <slot>capture_restart()</slot>
+  <slot>statistics_IPv4()</slot>
+  <slot>statistics_IPv6()</slot>
+  <slot>statistics_UDP()</slot>
+  <slot>statistics_TCP()</slot>
+  <slot>statistics_ARP()</slot>
+  <slot>statistics_HTTP()</slot>
+  <slot>statistics_DHCP()</slot>
+  <slot>statistics_DNS()</slot>
+  <slot>about()</slot>
+  <slot>statistics_chart()</slot>
+ </slots>
+</ui>
