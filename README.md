@@ -31,9 +31,9 @@ winpcap官方中文文档：www.ferrisxu.com/WinPcap/html/index.html
 
 ### 3. 效果图
 
-![image-20210115195952553](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20210115195952553.png)
+![image-20210115195952553](./效果图/捕获.png)
 
-![image-20210115200023127](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20210115200023127.png)
+![image-20210115200023127](./效果图/筛选.png)
 
-![image-20210115200008262](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20210115200008262.png)
+![image-20210115200008262](./效果图/统计.png)
 
