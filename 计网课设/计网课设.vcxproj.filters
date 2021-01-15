@@ -34,9 +34,27 @@
     <ClCompile Include="chart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Port.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Detail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Home.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Port.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Thread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Detail.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="chart.h">
@@ -50,6 +68,12 @@
     <QtUic Include="chart.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="Port.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Detail.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Home.qrc">
@@ -61,6 +85,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="x64\Debug\uic\ui_chart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="x64\Debug\uic\ui_Detail.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

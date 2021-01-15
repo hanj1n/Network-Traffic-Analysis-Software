@@ -1,8 +1,0 @@
-﻿  rcc Home.qrc
-  Home.cpp
-  chart.cpp
-  main.cpp
-  moc_Home.cpp
-  moc_chart.cpp
-  qrc_Home.cpp
-  计网课设.vcxproj -> F:\VS代码\计网课设\x64\Debug\计网课设.exe

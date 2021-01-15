@@ -38,6 +38,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>F:\WinPcap\WpdPack_4_1_2\WpdPack\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\WinPcap\WpdPack_4_1_2\WpdPack\Lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>F:\WinPcap\WpdPack_4_1_2\WpdPack\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\WinPcap\WpdPack_4_1_2\WpdPack\Lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
@@ -47,7 +55,8 @@
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;quick;quickwidgets;widgets</QtModules>
+    <QtModules>charts;core;gui;quick;quickwidgets;widgets</QtModules>
+    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -59,11 +68,13 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PreprocessorDefinitions>WPCAP;HAVE_REMOTE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>wpcap.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -72,31 +83,42 @@
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PreprocessorDefinitions>WPCAP;HAVE_REMOTE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>wpcap.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="chart.cpp" />
+    <ClCompile Include="Detail.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Port.cpp" />
+    <ClCompile Include="Thread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Home.h" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="chart.ui" />
+    <QtUic Include="Detail.ui" />
     <QtUic Include="Home.ui" />
+    <QtUic Include="Port.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Home.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="Port.h" />
+    <QtMoc Include="Thread.h" />
+    <QtMoc Include="Detail.h" />
     <ClInclude Include="x64\Debug\uic\ui_chart.h" />
     <QtMoc Include="chart.h" />
+    <ClInclude Include="x64\Debug\uic\ui_Detail.h" />
     <ClInclude Include="x64\Debug\uic\ui_Home.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

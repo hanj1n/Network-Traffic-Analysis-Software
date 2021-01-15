@@ -35,21 +35,11 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QListView" name="listView_search">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>621</width>
-      <height>381</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="lineEdit_search">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>0</y>
+      <y>2</y>
       <width>591</width>
       <height>25</height>
      </rect>
@@ -68,7 +58,7 @@
     <property name="geometry">
      <rect>
       <x>616</x>
-      <y>0</y>
+      <y>2</y>
       <width>25</width>
       <height>25</height>
      </rect>
@@ -80,6 +70,34 @@ background-color: rgb(255, 255, 255);</string>
     <property name="text">
      <string/>
     </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget_search">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>31</y>
+      <width>621</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -115,8 +133,6 @@ background-color: rgb(255, 255, 255);</string>
      <string>统计</string>
     </property>
     <addaction name="action_chart"/>
-    <addaction name="action_IPv4_statistics"/>
-    <addaction name="action_IPv6_statistics"/>
    </widget>
    <widget class="QMenu" name="menu_capture">
     <property name="title">
@@ -124,13 +140,14 @@ background-color: rgb(255, 255, 255);</string>
     </property>
     <addaction name="action_start"/>
     <addaction name="action_stop"/>
-    <addaction name="action_restart"/>
+    <addaction name="action_end"/>
    </widget>
    <widget class="QMenu" name="menu_view">
     <property name="title">
      <string>视图</string>
     </property>
     <addaction name="action_filter"/>
+    <addaction name="action_unshow"/>
    </widget>
    <widget class="QMenu" name="menu_about">
     <property name="title">
@@ -163,8 +180,11 @@ background-color: rgb(255, 255, 255);</string>
    </property>
   </action>
   <action name="action_stop">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>停止</string>
+    <string>暂停</string>
    </property>
   </action>
   <action name="action_filter">
@@ -178,9 +198,12 @@ background-color: rgb(255, 255, 255);</string>
     <string>过滤器</string>
    </property>
   </action>
-  <action name="action_restart">
+  <action name="action_end">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>重新开始</string>
+    <string>结束</string>
    </property>
   </action>
   <action name="action_exit">
@@ -240,7 +263,7 @@ background-color: rgb(255, 255, 255);</string>
   </action>
   <action name="action_IPv4_statistics">
    <property name="text">
-    <string>IPv4 statistics</string>
+    <string>IPv4</string>
    </property>
   </action>
   <action name="action_3">
@@ -250,7 +273,18 @@ background-color: rgb(255, 255, 255);</string>
   </action>
   <action name="action_IPv6_statistics">
    <property name="text">
-    <string>IPv6 statistics</string>
+    <string>IPv6</string>
+   </property>
+  </action>
+  <action name="action_unshow">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>后台加载</string>
    </property>
   </action>
  </widget>
@@ -295,7 +329,7 @@ background-color: rgb(255, 255, 255);</string>
    <sender>action_exit</sender>
    <signal>triggered()</signal>
    <receiver>HomeClass</receiver>
-   <slot>close()</slot>
+   <slot>exit()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -343,7 +377,7 @@ background-color: rgb(255, 255, 255);</string>
    <sender>action_stop</sender>
    <signal>triggered()</signal>
    <receiver>HomeClass</receiver>
-   <slot>capture_end()</slot>
+   <slot>capture_stop()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -356,10 +390,10 @@ background-color: rgb(255, 255, 255);</string>
    </hints>
   </connection>
   <connection>
-   <sender>action_restart</sender>
+   <sender>action_end</sender>
    <signal>triggered()</signal>
    <receiver>HomeClass</receiver>
-   <slot>capture_restart()</slot>
+   <slot>capture_end()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -403,6 +437,38 @@ background-color: rgb(255, 255, 255);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>action_IPv6_statistics</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>statistics_IPv6()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_IPv4_statistics</sender>
+   <signal>triggered()</signal>
+   <receiver>HomeClass</receiver>
+   <slot>statistics_IPv4()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>file_import()</slot>
@@ -411,7 +477,7 @@ background-color: rgb(255, 255, 255);</string>
   <slot>view_filter()</slot>
   <slot>capture_start()</slot>
   <slot>capture_end()</slot>
-  <slot>capture_restart()</slot>
+  <slot>capture_stop()</slot>
   <slot>statistics_IPv4()</slot>
   <slot>statistics_IPv6()</slot>
   <slot>statistics_UDP()</slot>
@@ -422,5 +488,7 @@ background-color: rgb(255, 255, 255);</string>
   <slot>statistics_DNS()</slot>
   <slot>about()</slot>
   <slot>statistics_chart()</slot>
+  <slot>exit()</slot>
+  <slot>packet_search()</slot>
  </slots>
 </ui>

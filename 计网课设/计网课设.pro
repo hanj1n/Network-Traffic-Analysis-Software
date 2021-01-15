@@ -13,3 +13,7 @@ OBJECTS_DIR += debug
 UI_DIR += .
 RCC_DIR += .
 include(../计网课设.pri)
+INCLUDEPATH += ./WpdPack/WpdPack/Include
+LIBS += ./WpdPack/Lib/x64/wpcap.lib
+LIBS += ./WpdPack/Lib/x64/Packet.lib
+CONFIG += no_lflags_merge

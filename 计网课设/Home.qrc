@@ -1,6 +1,5 @@
 <RCC>
   <qresource prefix="Home">
     <file>icon/进入.png</file>
-    <file>icon/方向连续箭头-向右.png</file>
   </qresource>
 </RCC>
